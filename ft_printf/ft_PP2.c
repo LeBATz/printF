@@ -6,7 +6,7 @@
 /*   By: rdavid-g <rdavid-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:22:21 by rdavid-g          #+#    #+#             */
-/*   Updated: 2025/01/29 20:41:45 by rdavid-g         ###   ########.fr       */
+/*   Updated: 2025/01/29 21:36:29 by rdavid-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	print_u(unsigned int n)
 	return (count + 1);
 }
 
-int	print_x(unsigned int n)
+int	print_x(unsigned long n)
 {
 	int	count;
 
@@ -52,12 +52,12 @@ int	print_x(unsigned int n)
 	return (count + print_c(HEXLOWER[n % 16]));
 }
 
-int	print_bigx(unsigned int n)
+int	print_bigx(unsigned long n)
 {
 	int	count;
 
 	count = 0;
 	if (n >= 16)
-		count += print_x(n / 16);
+		count += print_bigx(n / 16);
 	return (count + print_c(HEXUPPER[n % 16]));
 }

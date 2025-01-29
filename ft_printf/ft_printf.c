@@ -6,7 +6,7 @@
 /*   By: rdavid-g <rdavid-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:14:51 by rdavid-g          #+#    #+#             */
-/*   Updated: 2025/01/29 20:41:42 by rdavid-g         ###   ########.fr       */
+/*   Updated: 2025/01/29 21:29:19 by rdavid-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	this_type(char type, va_list ap)
 	else if (type == 'x')
 		count += print_x(va_arg(ap, unsigned int));
 	else if (type == 'X')
-		count += print_X(va_arg(ap, unsigned int));
+		count += print_bigx(va_arg(ap, unsigned int));
 	else
 		count += write(1, &type, 1);
 	return (count);
@@ -49,10 +49,11 @@ static int	type_check(va_list ap, const char *type)
 		{
 			type++;
 			if (*type != '\0')
-				count += this_type(ap, *type);
+				count += this_type(*type, ap);
 		}
 		else
 			count += print_c(*type);
+		type++;
 	}
 	return (count);
 }
@@ -66,7 +67,7 @@ int	ft_printf(const char *type, ...)
 	if (!type)
 		return (-1);
 	va_start(ap, type);
-	count = type_check(ap, *type);
+	count = type_check(ap, type);
 	va_end(ap);
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: rdavid-g <rdavid-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 20:14:32 by rdavid-g          #+#    #+#             */
-/*   Updated: 2025/01/29 20:41:47 by rdavid-g         ###   ########.fr       */
+/*   Updated: 2025/01/29 21:41:01 by rdavid-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	print_p(void *ptr)
 	int	count;
 
 	if (!ptr)
-		return (print_p("(null)"));
-	count += print_s("0x") + print_x((unsigned long)ptr);
+		return (print_s("(nil)"));
+	count = print_s("0x") + print_x((unsigned long)ptr);
 	return (count);
 }
